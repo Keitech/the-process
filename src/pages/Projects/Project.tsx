@@ -12,11 +12,7 @@ const Project = ({ projects }: ProjectTypes) => {
   window.scrollTo(0, 0);
   const { id } = useParams<{ id?: string }>();
 
-  if (!id) {
-    return <DoesNotExist />;
-  }
-
-  const project = projects.find((item) => item.id === parseInt(id));
+  const project = projects.find((item) => item.id === parseInt(id!));
 
   if (!project) {
     return <DoesNotExist />;
