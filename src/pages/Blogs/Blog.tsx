@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { BlogProps } from './BlogItems/BlogItems';
 import Footer from 'components/Footer/Footer';
 import Reveal from 'components/Reveal';
@@ -11,13 +11,15 @@ interface BlogTypes {
 
 const Blog = ({ blogs }: BlogTypes) => {
   window.scrollTo(0, 0);
-  const { id } = useParams<{ id?: string }>();
+  const { id } = useParams<{ id?: string  }>();
+
+  const navigate = useNavigate()
 
   if (!id) {
-    return <DoesNotExist />
+    navigate('/notfound', {replace: true})
   }
 
-  const blog = blogs.find((item) => item.id === parseInt(id));
+  const blog = blogs.find((item) => item.id === parseInt(id!));
 
   if (!blog) {
     return <DoesNotExist />
