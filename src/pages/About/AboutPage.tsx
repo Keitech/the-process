@@ -75,7 +75,7 @@ const AboutPage = () => {
           <Reveal>
             <img src={aboutImage} alt='pic of me' className=' rounded-[10px]' />
           </Reveal>
-          <div className='flex flex-col gap-5 mt-[5vh] text-2xl'>
+          <div className='flex flex-col gap-5 mt-[5vh]  text-xl md:text-2xl'>
             <Reveal>
               <div className='flex'>
                 <div style={{ minWidth: `${offsetLeft}px` }} />
@@ -121,7 +121,7 @@ const AboutPage = () => {
                 <div className='flex flex-col lg:flex-row text-xl xl:text-2xl justify-between'>
                   <div style={{ minWidth: `${offsetLeft}px` }}>{item.date}</div>
                   <div
-                    className={`flex row lg:justify-between font-medium w-[90vw]`}
+                    className={`flex flex-wrap lg:justify-between font-medium w-full`}
                   >
                     <div>{item.name}</div>
                     <div className='visible lg:invisible self-center'>

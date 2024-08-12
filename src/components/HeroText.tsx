@@ -45,7 +45,7 @@ const HeroText = ({ row1, isFirstMount }: HeroTextProps) => {
       variants={content(isFirstMount)}
       className='w-full h-4/5'
     >
-      <motion.div className='flex flex-row mt-32 items-center justify-center min-h-[45vh] text-4xl sm:text-5xl'>
+      <motion.div className='flex flex-row mt-32 items-center justify-center min-h-[45vh] text-3xl md:text-5xl'>
         <CenterText>
           <motion.div
             variants={text}
