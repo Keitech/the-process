@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { BlogProps } from './BlogItems/BlogItems';
 import Footer from 'components/Footer/Footer';
 import Reveal from 'components/Reveal';
+import DoesNotExist from 'components/DoesNotExist';
 
 interface BlogTypes {
   blogs: BlogProps[];
@@ -13,13 +14,13 @@ const Blog = ({ blogs }: BlogTypes) => {
   const { id } = useParams<{ id?: string }>();
 
   if (!id) {
-    return <div>User ID is not provided</div>;
+    return <DoesNotExist />
   }
 
   const blog = blogs.find((item) => item.id === parseInt(id));
 
   if (!blog) {
-    return <div>this no exist fammo</div>;
+    return <DoesNotExist />
   }
 
   return (

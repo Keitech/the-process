@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import Footer from 'components/Footer/Footer';
 import { ProjectProps } from './ProjectItems/ProjectItems';
 import Reveal from 'components/Reveal';
+import DoesNotExist from 'components/DoesNotExist';
 
 interface ProjectTypes {
   projects: ProjectProps[];
@@ -12,13 +13,13 @@ const Project = ({ projects }: ProjectTypes) => {
   const { id } = useParams<{ id?: string }>();
 
   if (!id) {
-    return <div>User ID is not provided</div>;
+    return <DoesNotExist />;
   }
 
   const project = projects.find((item) => item.id === parseInt(id));
 
   if (!project) {
-    return <div>this no exist fammo</div>;
+    return <DoesNotExist />;
   }
 
   return (
