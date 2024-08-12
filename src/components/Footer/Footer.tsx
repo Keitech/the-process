@@ -60,7 +60,7 @@ const Footer = () => {
             <FaRegCopyright />
             2024
           </div>
-          <div className='flex flex-row gap-[15px] text-[18px]'>
+          <div className='flex-row gap-[15px] text-[18px] hidden md:flex'>
             {navItems.map((item, key) => (
               <Link
                 key={key}

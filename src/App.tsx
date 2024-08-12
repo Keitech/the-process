@@ -53,7 +53,7 @@ const App = () => {
             path='/blogs/:id'
             element={<Blog blogs={blogs} />}
           />
-          <Route key='unknown' path='*' element={<Navigate to='/' />} />
+          <Route key='unknown' path='*' element={<Navigate to='/' replace/>} />
         </Routes>
     </>
   );
