@@ -21,9 +21,9 @@ const BlogCard = ({ item }: { item: BlogProps }) => {
       onClick={() => handleNavigate(item.id)}
     >
       <div className='w-[45%] flex flex-col text-black ml-[5%]'>
-        <div className='text-md'>{item.date}</div>
-        <div className='text-3xl font-medium mt-3 mb-1'>{item.title}</div>
-        <div className='text-md'>{item.desc}</div>
+        <div className='text-sm md:text-md'>{item.date}</div>
+        <div className='text-md md:text-3xl font-medium mt-3 mb-1'>{item.title}</div>
+        <div className='text-sm md:text-md'>{item.desc}</div>
       </div>
       <div className='w-[150%] rotate-[5deg] overflow-hidden absolute left-[50%] bottom-0'>
         <img
