@@ -3,7 +3,7 @@ import { PiGithubLogo } from 'react-icons/pi';
 import { CgMail } from 'react-icons/cg';
 import { FaRegCopyright } from 'react-icons/fa';
 import Reveal from 'components/Reveal';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { navItems } from 'components/navItems';
 
 const socialItems = [
@@ -25,6 +25,14 @@ const socialItems = [
 ];
 
 const Footer = () => {
+  const location = useLocation()
+
+  const handleSamePageClick = (path: string) => {
+    if (location.pathname === path) {
+      window.scrollTo(0, 0)
+    }
+  }
+
   return (
     <Reveal>
       <div className='w-[80vw] py-[15vh] pb-[5vh]'>
@@ -66,6 +74,7 @@ const Footer = () => {
                 key={key}
                 to={item.path}
                 className='hover:text-hover-grayblue'
+                onClick={() => handleSamePageClick(item.path)}
               >
                 {item.name}
               </Link>

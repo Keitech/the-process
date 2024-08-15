@@ -25,7 +25,7 @@ const Blog = ({ blogs }: BlogTypes) => {
           <div className='text-5xl'>{blog!.title}</div>
           <div className='text-xl'>{blog!.date}</div>
           <hr className='border border-black' />
-          <div className='text-2xl whitespace-pre-line'>{blog!.text}</div>
+          <div className='text-xl whitespace-pre-line'>{blog!.text}</div>
         </div>
         <Footer />
       </div>

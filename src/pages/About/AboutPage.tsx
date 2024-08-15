@@ -18,17 +18,17 @@ const experience = [
     position: 'Computer Engineer',
   },
   {
-    name: 'MicroFocus (OpenText)',
+    name: 'OpenText (MicroFocus)',
     date: '2021',
     position: 'DevOps Engineer (Co-op)',
   },
   {
-    name: 'MicroFocus (OpenText)',
+    name: 'OpenText (MicroFocus)',
     date: '2020',
     position: 'UX Developer (Co-op)',
   },
   {
-    name: 'MicroFocus (OpenText)',
+    name: 'OpenText (MicroFocus)',
     date: '2020',
     position: 'QA Engineer (Co-op)',
   },
@@ -75,7 +75,7 @@ const AboutPage = () => {
           <Reveal>
             <img src={aboutImage} alt='pic of me' className=' rounded-[10px]' />
           </Reveal>
-          <div className='flex flex-col gap-5 mt-[5vh]  text-xl md:text-2xl'>
+          <div className='flex flex-col gap-5 mt-[5vh] text-xl md:text-2xl'>
             <Reveal>
               <div className='flex'>
                 <div style={{ minWidth: `${offsetLeft}px` }} />
@@ -96,12 +96,12 @@ const AboutPage = () => {
                 <div style={{ minWidth: `${offsetLeft}px` }} />
                 <div className='xl:w-[55%] lg:w-[60%]'>
                   I have a deep curiosity for new technologies and their
-                  practical applications in the real world. But when I'm not focused
-                  on my work, I dedicate time to staying physically active at
-                  the gym, playing volleyball, climbing some rocks, and spending
-                  time with friends and family. You can also catch me on World's
-                  Edge in Apex or find me farming minions in top lane on
-                  Summoner's Rift.
+                  practical applications in the real world. But when I'm not
+                  focused on my work, I dedicate time to staying physically
+                  active at the gym, playing volleyball, climbing some rocks,
+                  and spending time with friends and family. You can also catch
+                  me on World's Edge in Apex or find me farming minions in top
+                  lane on Summoner's Rift.
                 </div>
               </div>
             </Reveal>
