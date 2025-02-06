@@ -1,5 +1,6 @@
 import { FirstProject } from './FirstProject';
 import { SecondProject } from './SecondProject';
+import { ThirdProject } from './ThirdProject';
 
 export interface ProjectProps {
   id: number;
@@ -15,5 +16,5 @@ export interface ProjectProps {
 }
 
 export const projects: ProjectProps[] = [
-  FirstProject, SecondProject
+  ThirdProject, FirstProject, SecondProject
 ]
