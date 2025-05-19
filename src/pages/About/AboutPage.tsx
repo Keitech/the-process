@@ -8,6 +8,11 @@ import { useEffect, useRef, useState } from 'react';
 
 const experience = [
   {
+    name: 'Condrain Group',
+    date: 'Present',
+    position: 'Software Analyst'
+  },
+  {
     name: 'Arima',
     date: '2022 - 2024',
     position: 'Full Stack Developer',

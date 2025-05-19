@@ -66,7 +66,7 @@ const Footer = () => {
         <div className='mt-[25vh] flex justify-between'>
           <div className='flex gap-1 items-center'>
             <FaRegCopyright />
-            2024
+            2025
           </div>
           <div className='flex-row gap-[15px] text-[18px] hidden md:flex'>
             {navItems.map((item, key) => (
