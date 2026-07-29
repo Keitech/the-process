@@ -1,9 +1,7 @@
-import React from 'react';
 import { IoMdClose } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaRegCopyright } from 'react-icons/fa';
-import { useLocation } from 'react-router-dom';
-import { navItems } from 'components/navItems';
+import { navItems, isExternalPath } from 'components/navItems';
 
 type Props = {
   isOpen: boolean;
@@ -13,7 +11,6 @@ type Props = {
 const Sidebar = ({ isOpen, handleToggle }: Props) => {
   const location = useLocation();
 
-  // Function to check if the current path matches the link path
   const isActive = (path: string) => location.pathname === path;
 
   const handleSamePageClick = (path: string) => {
@@ -38,23 +35,34 @@ const Sidebar = ({ isOpen, handleToggle }: Props) => {
             <IoMdClose className='cursor-pointer' onClick={handleToggle} />
           </div>
           <div className='flex flex-col gap-10 mt-[20vh] text-5xl h-[60%]'>
-            {navItems.map((item, key) => (
-              <Link
-                key={key}
-                className={`hover:text-hover-grayblue ${
-                  isActive(item.path) ? 'text-hover-grayblue' : ''
-                }`}
-                to={item.path}
-                onClick={() => handleSamePageClick(item.path)}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              isExternalPath(item.path) ? (
+                <a
+                  key={item.name}
+                  className='hover:text-hover-grayblue'
+                  href={item.path}
+                  onClick={handleToggle}
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  className={`hover:text-hover-grayblue ${
+                    isActive(item.path) ? 'text-hover-grayblue' : ''
+                  }`}
+                  to={item.path}
+                  onClick={() => handleSamePageClick(item.path)}
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
           </div>
           <div>
             <div className='flex gap-1 items-center'>
               <FaRegCopyright />
-              2024
+              2026
             </div>
           </div>
         </div>

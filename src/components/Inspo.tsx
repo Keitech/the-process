@@ -1,9 +1,6 @@
-import React from 'react';
 import riot from 'assets/riot3.svg';
 import fractal from 'assets/frac.svg';
 import apple from 'assets/appl.svg';
-
-type Props = {};
 
 const inspoItems = [
   {
@@ -52,7 +49,7 @@ const InspoCard = ({ item }: { item: CardProps }) => {
   );
 };
 
-const Inspo = (props: Props) => {
+const Inspo = () => {
   return (
     <div className='flex justify-between flex-col gap-10 lg:flex-row'>
       {inspoItems.map((item) => (

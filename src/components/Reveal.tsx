@@ -1,12 +1,11 @@
 import { useRef, useEffect } from 'react';
-import { motion, useInView, useAnimation} from 'framer-motion';
+import { motion, useInView, useAnimation } from 'framer-motion';
 
 interface Props {
   children: JSX.Element;
-  width?: 'fit-content' | '100%';
 }
 
-const Reveal = ({ children, width = '100%' }: Props) => {
+const Reveal = ({ children }: Props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -19,7 +18,7 @@ const Reveal = ({ children, width = '100%' }: Props) => {
   }, [isInView, mainControls]);
 
   return (
-    <div ref={ref} className={`relative w-[${width}] overflow-hidden`}>
+    <div ref={ref} className='relative w-full overflow-hidden'>
       <motion.div
         variants={{
           hidden: { opacity: 0, y: 50 },

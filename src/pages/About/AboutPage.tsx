@@ -42,7 +42,6 @@ const experience = [
 const AboutPage = () => {
   const elementRef = useRef<HTMLDivElement>(null);
   const [offsetLeft, setOffsetLeft] = useState<number>(0);
-  const [isFirstMount, setIsFirstMount] = useState<boolean>(true);
 
   const updateOffsetLeft = () => {
     if (elementRef.current) {
@@ -51,21 +50,16 @@ const AboutPage = () => {
   };
 
   useEffect(() => {
-    if (isFirstMount) {
-      window.scrollTo(0, 0);
-      setIsFirstMount(false);
-    }
-    // Initial update
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     updateOffsetLeft();
-
-    // Update on window resize
     window.addEventListener('resize', updateOffsetLeft);
-
-    // Cleanup on component unmount
     return () => {
       window.removeEventListener('resize', updateOffsetLeft);
     };
-  }, [isFirstMount]);
+  }, []);
 
   return (
     <div className='flex flex-col items-center'>
@@ -85,7 +79,7 @@ const AboutPage = () => {
               <div className='flex'>
                 <div style={{ minWidth: `${offsetLeft}px` }} />
                 <div className='xl:w-[55%] lg:w-[60%]'>
-                  As a Full Stack Software Developer with three years of
+                  As a Full Stack Software Developer with five years of
                   industry experience, I am committed to pursuing new challenges
                   that push the boundaries of my technical abilities. My goal is
                   to continuously enhance my skills by staying current with the

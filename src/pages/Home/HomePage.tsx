@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HeroText from 'components/HeroText';
 import { motion } from 'framer-motion';
 import ProjectPreview from 'pages/Projects/ProjectPreview';
@@ -12,7 +12,9 @@ type HomePageProps = {
 };
 
 const HomePage = ({ isFirstMount }: HomePageProps) => {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <motion.section

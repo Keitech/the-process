@@ -4,10 +4,6 @@ export const navItems = [
     path: '/',
   },
   {
-    name: 'Blogs',
-    path: '/blogs',
-  },
-  {
     name: 'About',
     path: '/about',
   },
@@ -16,3 +12,6 @@ export const navItems = [
     path: 'mailto:kmtna@proton.me',
   },
 ];
+
+export const isExternalPath = (path: string) =>
+  path.startsWith('mailto:') || path.startsWith('http');

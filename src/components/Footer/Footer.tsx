@@ -4,7 +4,7 @@ import { CgMail } from 'react-icons/cg';
 import { FaRegCopyright } from 'react-icons/fa';
 import Reveal from 'components/Reveal';
 import { Link, useLocation } from 'react-router-dom';
-import { navItems } from 'components/navItems';
+import { navItems, isExternalPath } from 'components/navItems';
 
 const socialItems = [
   {
@@ -25,13 +25,13 @@ const socialItems = [
 ];
 
 const Footer = () => {
-  const location = useLocation()
+  const location = useLocation();
 
   const handleSamePageClick = (path: string) => {
     if (location.pathname === path) {
-      window.scrollTo(0, 0)
+      window.scrollTo(0, 0);
     }
-  }
+  };
 
   return (
     <Reveal>
@@ -66,19 +66,29 @@ const Footer = () => {
         <div className='mt-[25vh] flex justify-between'>
           <div className='flex gap-1 items-center'>
             <FaRegCopyright />
-            2025
+            2026
           </div>
           <div className='flex-row gap-[15px] text-[18px] hidden md:flex'>
-            {navItems.map((item, key) => (
-              <Link
-                key={key}
-                to={item.path}
-                className='hover:text-hover-grayblue'
-                onClick={() => handleSamePageClick(item.path)}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              isExternalPath(item.path) ? (
+                <a
+                  key={item.name}
+                  href={item.path}
+                  className='hover:text-hover-grayblue'
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className='hover:text-hover-grayblue'
+                  onClick={() => handleSamePageClick(item.path)}
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
           </div>
         </div>
       </div>

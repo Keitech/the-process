@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from 'components/Footer/Footer';
 import { ProjectProps } from './ProjectItems/ProjectItems';
@@ -9,8 +10,11 @@ interface ProjectTypes {
 }
 
 const Project = ({ projects }: ProjectTypes) => {
-  window.scrollTo(0, 0);
   const { id } = useParams<{ id?: string }>();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const project = projects.find((item) => item.id === parseInt(id!));
 
@@ -26,11 +30,13 @@ const Project = ({ projects }: ProjectTypes) => {
           <div className='text-xl'>{project.date}</div>
           <hr className='border border-black' />
           <div className='text-2xl'>{project.longDesc}</div>
-          <a href={project.link} target='_blank' rel='noopener noreferrer'>
-            <div className='text-[blue] cursor-pointer w-[fit-content]'>
-              See More
-            </div>
-          </a>
+          {project.link && (
+            <a href={project.link} target='_blank' rel='noopener noreferrer'>
+              <div className='text-[blue] cursor-pointer w-[fit-content]'>
+                See More
+              </div>
+            </a>
+          )}
         </div>
         <Footer />
       </div>

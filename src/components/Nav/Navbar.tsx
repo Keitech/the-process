@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { navItems } from 'components/navItems';
+import { navItems, isExternalPath } from 'components/navItems';
 
 type Props = {
   handleToggle: () => void;
@@ -14,7 +14,6 @@ const Navbar = ({ handleToggle }: Props) => {
 
   const location = useLocation();
 
-  // Function to check if the current path matches the link path
   const isActive = (path: string) => location.pathname === path;
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
@@ -28,9 +27,9 @@ const Navbar = ({ handleToggle }: Props) => {
 
   const handleSamePageClick = (path: string) => {
     if (location.pathname === path) {
-      window.scrollTo(0, 0)
+      window.scrollTo(0, 0);
     }
-  }
+  };
 
   return (
     <motion.nav
@@ -50,18 +49,28 @@ const Navbar = ({ handleToggle }: Props) => {
         </div>
         <div className='w-[0] md:w-[max-content] hidden md:block'>
           <div className='flex md:gap-10 justify-between text-22px'>
-            {navItems.map((item, key) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`hover:text-hover-grayblue ${
-                  isActive(item.path) ? 'text-hover-grayblue' : ''
-                }`}
-                onClick={() => handleSamePageClick(item.path)}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              isExternalPath(item.path) ? (
+                <a
+                  key={item.name}
+                  href={item.path}
+                  className='hover:text-hover-grayblue'
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`hover:text-hover-grayblue ${
+                    isActive(item.path) ? 'text-hover-grayblue' : ''
+                  }`}
+                  onClick={() => handleSamePageClick(item.path)}
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
           </div>
         </div>
         <div className='md:invisible visible'>

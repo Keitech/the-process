@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BlogProps } from './BlogItems/BlogItems';
 import Footer from 'components/Footer/Footer';
@@ -9,8 +10,11 @@ interface BlogTypes {
 }
 
 const Blog = ({ blogs }: BlogTypes) => {
-  window.scrollTo(0, 0);
   const { id } = useParams<{ id?: string }>();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const blog = blogs.find((item) => item.id === parseInt(id!));
 
@@ -22,10 +26,10 @@ const Blog = ({ blogs }: BlogTypes) => {
     <Reveal>
       <div className='flex flex-col items-center mt-10'>
         <div className='w-[80vw] flex flex-col gap-5 min-h-[100%]'>
-          <div className='text-5xl'>{blog!.title}</div>
-          <div className='text-xl'>{blog!.date}</div>
+          <div className='text-5xl'>{blog.title}</div>
+          <div className='text-xl'>{blog.date}</div>
           <hr className='border border-black' />
-          <div className='text-xl whitespace-pre-line'>{blog!.text}</div>
+          <div className='text-xl whitespace-pre-line'>{blog.text}</div>
         </div>
         <Footer />
       </div>

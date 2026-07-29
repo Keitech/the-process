@@ -1,8 +1,8 @@
+import { useEffect } from 'react';
 import Footer from 'components/Footer/Footer';
 import HeroText from 'components/HeroText';
 import { useNavigate } from 'react-router-dom';
-import { blogs } from './BlogItems/BlogItems';
-import { BlogProps } from './BlogItems/BlogItems';
+import { blogs, BlogProps } from './BlogItems/BlogItems';
 import Reveal from 'components/Reveal';
 
 const BlogCard = ({ item }: { item: BlogProps }) => {
@@ -28,7 +28,7 @@ const BlogCard = ({ item }: { item: BlogProps }) => {
       <div className='w-[150%] rotate-[5deg] overflow-hidden absolute left-[50%] bottom-0'>
         <img
           src={item.img}
-          alt='test'
+          alt={item.title}
           className='h-[500px] border-2 border-black rounded-[25px] scale-90 hover:scale-95 transform transition duration-300'
         />
       </div>
@@ -36,10 +36,10 @@ const BlogCard = ({ item }: { item: BlogProps }) => {
   );
 };
 
-type Props = {};
-
-const BlogPage = (props: Props) => {
-  window.scrollTo(0, 0);
+const BlogPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className='flex flex-col items-center'>
@@ -50,8 +50,8 @@ const BlogPage = (props: Props) => {
         />
         <Reveal>
           <div className='flex flex-row gap-[3%] flex-wrap'>
-            {blogs.map((item, key) => (
-              <BlogCard item={item} key={key} />  
+            {blogs.map((item) => (
+              <BlogCard item={item} key={item.id} />
             ))}
           </div>
         </Reveal>
