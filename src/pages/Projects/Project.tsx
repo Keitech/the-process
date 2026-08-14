@@ -37,8 +37,8 @@ const Project = ({ projects }: ProjectTypes) => {
               </div>
             </a>
           )}
+          <Footer />
         </div>
-        <Footer />
       </div>
     </Reveal>
   );

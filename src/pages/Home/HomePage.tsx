@@ -7,12 +7,15 @@ import Footer from 'components/Footer/Footer';
 import Inspo from 'components/Inspo';
 import Reveal from 'components/Reveal';
 
-type HomePageProps = {
-  isFirstMount: boolean;
-};
+// Survives SPA navigations; resets on full page refresh
+let hasPlayedIntro = false;
 
-const HomePage = ({ isFirstMount }: HomePageProps) => {
+const HomePage = () => {
+  // Don't set the flag in the initializer — Strict Mode runs it twice
+  const [isFirstMount] = useState(() => !hasPlayedIntro);
+
   useEffect(() => {
+    hasPlayedIntro = true;
     window.scrollTo(0, 0);
   }, []);
 

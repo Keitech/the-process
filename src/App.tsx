@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from 'pages/Home/HomePage';
 import Navbar from 'components/Nav/Navbar';
@@ -9,12 +9,7 @@ import Project from 'pages/Projects/Project';
 import DoesNotExist from 'components/DoesNotExist';
 
 const App = () => {
-  const isFirstMount = useRef(true);
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    isFirstMount.current = false;
-  }, []);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -25,11 +20,7 @@ const App = () => {
       <Navbar handleToggle={handleToggle} />
       <Sidebar isOpen={isOpen} handleToggle={handleToggle} />
       <Routes>
-        <Route
-          key='home'
-          path='/'
-          element={<HomePage isFirstMount={isFirstMount.current} />}
-        />
+        <Route key='home' path='/' element={<HomePage />} />
         <Route key='about' path='/about' element={<AboutPage />} />
         <Route
           key='projects-id'
